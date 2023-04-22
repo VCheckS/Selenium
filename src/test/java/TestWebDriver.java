@@ -16,7 +16,6 @@ public class TestWebDriver {
 
     @BeforeAll
     public static void setupClass() {
-//        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -46,10 +45,8 @@ public class TestWebDriver {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79222650601");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button__text")).click();
-//        driver.findElement(By.cssSelector("button.button")).click();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         String actual = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
-//        var actualText = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
         assertEquals(expected, actual);
 
     }
